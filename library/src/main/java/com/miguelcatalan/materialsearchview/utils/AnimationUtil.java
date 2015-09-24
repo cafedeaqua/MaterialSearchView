@@ -17,31 +17,31 @@ public class AnimationUtil {
         /**
          * @return true to override parent. Else execute Parent method
          */
-        boolean onAnimationStart(View view);
+        boolean onAnimationStart(final View view);
 
-        boolean onAnimationEnd(View view);
+        boolean onAnimationEnd(final View view);
 
-        boolean onAnimationCancel(View view);
+        boolean onAnimationCancel(final View view);
     }
 
-    public static void crossFadeViews(View showView, View hideView) {
+    public static void crossFadeViews(final View showView, final View hideView) {
         crossFadeViews(showView, hideView, ANIMATION_DURATION_SHORT);
     }
 
-    public static void crossFadeViews(View showView, final View hideView, int duration) {
+    public static void crossFadeViews(final View showView, final View hideView, final int duration) {
         fadeInView(showView, duration);
         fadeOutView(hideView, duration);
     }
 
-    public static void fadeInView(View view) {
+    public static void fadeInView(final View view) {
         fadeInView(view, ANIMATION_DURATION_SHORT);
     }
 
-    public static void fadeInView(View view, int duration) {
+    public static void fadeInView(final View view, final int duration) {
         fadeInView(view, duration, null);
     }
 
-    public static void fadeInView(View view, int duration, final AnimationListener listener) {
+    public static void fadeInView(final View view, final int duration, final AnimationListener listener) {
         view.setVisibility(View.VISIBLE);
         view.setAlpha(0f);
         ViewPropertyAnimatorListener vpListener = null;
@@ -49,7 +49,7 @@ public class AnimationUtil {
         if (listener != null) {
             vpListener = new ViewPropertyAnimatorListener() {
                 @Override
-                public void onAnimationStart(View view) {
+                public void onAnimationStart(final View view) {
                     if (!listener.onAnimationStart(view)) {
                         //execute Parent MEthod
                         view.setDrawingCacheEnabled(true);
@@ -57,7 +57,7 @@ public class AnimationUtil {
                 }
 
                 @Override
-                public void onAnimationEnd(View view) {
+                public void onAnimationEnd(final View view) {
                     if (!listener.onAnimationEnd(view)) {
                         //execute Parent MEthod
                         view.setDrawingCacheEnabled(false);
@@ -65,7 +65,7 @@ public class AnimationUtil {
                 }
 
                 @Override
-                public void onAnimationCancel(View view) {
+                public void onAnimationCancel(final View view) {
                     if (!listener.onAnimationCancel(view)) {
                         //execute Parent MEthod
                     }
@@ -75,18 +75,18 @@ public class AnimationUtil {
         ViewCompat.animate(view).alpha(1f).setDuration(duration).setListener(vpListener);
     }
 
-    public static void fadeOutView(View view) {
+    public static void fadeOutView(final View view) {
         fadeOutView(view, ANIMATION_DURATION_SHORT);
     }
 
-    public static void fadeOutView(View view, int duration) {
+    public static void fadeOutView(final View view, final int duration) {
         fadeOutView(view, duration, null);
     }
 
-    public static void fadeOutView(View view, int duration, final AnimationListener listener) {
+    public static void fadeOutView(final View view, final int duration, final AnimationListener listener) {
         ViewCompat.animate(view).alpha(0f).setDuration(duration).setListener(new ViewPropertyAnimatorListener() {
             @Override
-            public void onAnimationStart(View view) {
+            public void onAnimationStart(final View view) {
                 if (listener == null || !listener.onAnimationStart(view)) {
                     //execute Parent MEthod
                     view.setDrawingCacheEnabled(true);
@@ -94,7 +94,7 @@ public class AnimationUtil {
             }
 
             @Override
-            public void onAnimationEnd(View view) {
+            public void onAnimationEnd(final View view) {
                 if (listener == null || !listener.onAnimationEnd(view)) {
                     //execute Parent MEthod
                     view.setVisibility(View.GONE);
@@ -104,7 +104,7 @@ public class AnimationUtil {
             }
 
             @Override
-            public void onAnimationCancel(View view) {
+            public void onAnimationCancel(final View view) {
                 if (listener == null || !listener.onAnimationCancel(view)) {
                     //execute Parent MEthod
                 }

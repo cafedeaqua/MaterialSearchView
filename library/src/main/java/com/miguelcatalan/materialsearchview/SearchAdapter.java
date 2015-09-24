@@ -1,7 +1,6 @@
 package com.miguelcatalan.materialsearchview;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -29,13 +28,13 @@ public class SearchAdapter extends BaseAdapter implements Filterable {
 
     LayoutInflater inflater;
 
-    public SearchAdapter(Context context, String[] typeAheadData) {
+    public SearchAdapter(final Context context, final String[] typeAheadData) {
         inflater = LayoutInflater.from(context);
         data = new ArrayList<>();
         this.typeAheadData = typeAheadData;
     }
 
-    public SearchAdapter(Context context, String[] typeAheadData, Drawable suggestionIcon) {
+    public SearchAdapter(final Context context, final String[] typeAheadData, final Drawable suggestionIcon) {
         inflater = LayoutInflater.from(context);
         data = new ArrayList<>();
         this.typeAheadData = typeAheadData;
@@ -46,7 +45,7 @@ public class SearchAdapter extends BaseAdapter implements Filterable {
     public Filter getFilter() {
         Filter filter = new Filter() {
             @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
+            protected FilterResults performFiltering(final CharSequence constraint) {
                 FilterResults filterResults = new FilterResults();
                 if (!TextUtils.isEmpty(constraint)) {
                     // Retrieve the autocomplete results.
@@ -66,7 +65,7 @@ public class SearchAdapter extends BaseAdapter implements Filterable {
             }
 
             @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
+            protected void publishResults(final CharSequence constraint, final FilterResults results) {
                 if (results.values != null) {
                     data = (ArrayList<String>) results.values;
                     notifyDataSetChanged();
@@ -82,17 +81,17 @@ public class SearchAdapter extends BaseAdapter implements Filterable {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Object getItem(final int position) {
         return data.get(position);
     }
 
     @Override
-    public long getItemId(int position) {
+    public long getItemId(final int position) {
         return position;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
         MyViewHolder mViewHolder;
 
         if (convertView == null) {
@@ -115,7 +114,7 @@ public class SearchAdapter extends BaseAdapter implements Filterable {
         TextView textView;
         ImageView imageView;
 
-        public MyViewHolder(View convertView) {
+        public MyViewHolder(final View convertView) {
             textView = (TextView) convertView.findViewById(R.id.suggestion_text);
             if (suggestionIcon != null) {
                 imageView = (ImageView) convertView.findViewById(R.id.suggestion_icon);
