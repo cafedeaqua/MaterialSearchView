@@ -51,7 +51,7 @@ public class AnimationUtil {
                 @Override
                 public void onAnimationStart(final View view) {
                     if (!listener.onAnimationStart(view)) {
-                        //execute Parent MEthod
+                        //execute Parent Method
                         view.setDrawingCacheEnabled(true);
                     }
                 }
@@ -59,7 +59,7 @@ public class AnimationUtil {
                 @Override
                 public void onAnimationEnd(final View view) {
                     if (!listener.onAnimationEnd(view)) {
-                        //execute Parent MEthod
+                        //execute Parent Method
                         view.setDrawingCacheEnabled(false);
                     }
                 }
@@ -67,7 +67,7 @@ public class AnimationUtil {
                 @Override
                 public void onAnimationCancel(final View view) {
                     if (!listener.onAnimationCancel(view)) {
-                        //execute Parent MEthod
+                        //execute Parent Method
                     }
                 }
             };
@@ -88,7 +88,7 @@ public class AnimationUtil {
             @Override
             public void onAnimationStart(final View view) {
                 if (listener == null || !listener.onAnimationStart(view)) {
-                    //execute Parent MEthod
+                    //execute Parent Method
                     view.setDrawingCacheEnabled(true);
                 }
             }
@@ -96,7 +96,7 @@ public class AnimationUtil {
             @Override
             public void onAnimationEnd(final View view) {
                 if (listener == null || !listener.onAnimationEnd(view)) {
-                    //execute Parent MEthod
+                    //execute Parent Method
                     view.setVisibility(View.GONE);
                     //view.setAlpha(1f);
                     view.setDrawingCacheEnabled(false);
@@ -106,7 +106,7 @@ public class AnimationUtil {
             @Override
             public void onAnimationCancel(final View view) {
                 if (listener == null || !listener.onAnimationCancel(view)) {
-                    //execute Parent MEthod
+                    //execute Parent Method
                 }
             }
         });
